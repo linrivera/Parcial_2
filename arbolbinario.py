@@ -1,13 +1,11 @@
 class Nodo:
-    def __init__(self, nombre = None, edad = None, izqui = None, derecho = None):
-       
-       self.nombre = nombre
-       self.edad = edad
+    def __init__(self, dato = None, izqui = None, derecho = None):
+       self.dato = dato
        self.izqui = izqui
        self.derecho = derecho
 
     def _str_(self):
-        return str(self.nombre, self.edad)
+        return str(self.dato)
         
 class binarios: 
     def __init__(self):
@@ -21,32 +19,32 @@ class binarios:
             padre = None
             while aux != None:
                 padre = aux
-                if int(elemento.edad) >= int(aux.edad):
+                if int(elemento.dato) >= int(aux.dato):
                     aux = aux.derecho
                 else:
                     aux = aux.izqui
-            if int(elemento.edad) >= int(padre.edad):
+            if int(elemento.dato) >= int(padre.dato):
                     padre.derecho = elemento
             else:
                 padre.izqui = elemento
 
  
-    def  preorden(self, elemento):
+    def preorden(self, elemento):
         if elemento != None:
-            print(elemento)
+            print(elemento.dato)
             self.preorden(elemento.izqui) 
             self.preorden(elemento.derecho) 
 
-    def  postorden(self, elemento):
+    def postorden(self, elemento):
         if elemento != None:
             self.postorden(elemento.izqui) 
             self.postorden(elemento.derecho) 
-            print(elemento)
+            print(elemento.dato)
 
-    def  inorden(self, elemento):
+    def inorden(self, elemento):
         if elemento != None: 
             self.inorden(elemento.izqui) 
-            print(elemento)
+            print(elemento.dato)
             self.inorden(elemento.derecho) 
                     
     def getRaiz(self):
@@ -63,9 +61,8 @@ if __name__ == "__main__":
 
         num = input("Ingrese Opcion:\n")
         if num == "1":
-            nombre = input("Ingrese nombre: \n")
-            edad = input("Ingrese edad: \n")
-            nod = Nodo(nombre, edad)
+            dato = input("Ingrese dato: \n")
+            nod = Nodo(dato)
             ab.agregar(nod)
         elif num == "2":
             print("Impreso por preorden")
@@ -76,5 +73,3 @@ if __name__ == "__main__":
         elif num == "4":
             print("Impreso por inorden")
             ab.inorden(ab.getRaiz())
-
-Carlos Villatoro
